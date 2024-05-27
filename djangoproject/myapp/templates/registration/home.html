@@ -1,0 +1,125 @@
+<!-- myapp/templates/home.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p>You are now logged in.</p>
+        <a href="logut">Logout</a>
+    {% endif %}
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .container {
+            padding: 20px;
+        }
+        .hero {
+            background-image: url('hotel.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3em;
+        }
+        .booking-form {
+            background: #fff;
+            padding: 20px;
+            margin-top: -50px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .booking-form input, .booking-form select, .booking-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hotel Reservaciones</h1>
+    </header>
+    <nav>
+        <a href="">Inicio</a>
+        <a href="#">Reservaciones</a>
+        <a href="#">Habitaciones</a>
+        <a href="signup">Sign Up</a>
+        <a href="login">Log In</a>
+        <a href="#">Contacto</a>
+    </nav>
+    <div class="hero">
+        <h1>Bienvenidos a Nuestro Hotel</h1>
+    </div>
+    <div class="container">
+        <div class="booking-form">
+            <h2>Haz tu Reservación</h2>
+            <form>
+                <label for="checkin">Fecha de Entrada:</label>
+                <input type="date" id="checkin" name="checkin">
+                
+                <label for="checkout">Fecha de Salida:</label>
+                <input type="date" id="checkout" name="checkout">
+                
+                <label for="guests">Número de Huéspedes:</label>
+                <select id="guests" name="guests">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                
+                {% if user.is_authenticated %}
+                <h2>Welcome, {{ user.username }}!</h2>
+                <p>You are now logged in.</p>
+                <a href="logout">Logout</a>
+                <br><br>
+                <form action="reservar" method="get">
+                    <button type="submit">Reservar</button>
+                </form>
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="login">Login</a> | <a href="signup">Sign Up</a>
+    {% endif %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
